@@ -98,6 +98,8 @@ Plus a **custom** provider — point at any OpenAI-compatible endpoint (llama.cp
 - **Admin dashboard** — React + Vite UI to manage keys, reorder the fallback chain, inspect analytics, and run prompts in a playground. Dark mode included.
 - **Analytics** — Per-request logging with latency, token counts, success rate, and per-provider breakdowns.
 - **Context handoff on model switch** — Optional. When a session falls over to a different model, injects one compact system message so the new model knows it is continuing an existing task. Disabled by default; enable with `FREELLMAPI_CONTEXT_HANDOFF=on_model_switch`. See [Context Handoff](#context-handoff).
+- **Persistent Penalties & Cooldown History** — Rate-limit penalties and cooldown escalation history survive server restarts. A key that hit its daily cap yesterday gets a 24h cooldown immediately on restart, not a fresh 2m cooldown. Penalties decay automatically as models recover.
+- **Default System Prompt Injection** — Configure a global default system prompt (via dashboard Settings page or API) that's injected at the proxy level for every request — unless the client provides their own system message. Survives model failover for consistent persona across the conversation.
 - **Runs anywhere Node 20+ runs** — Windows, macOS, Linux servers, or a small ARM SBC (Raspberry Pi included). ~40 MB RSS at idle behind PM2 / systemd / whatever supervisor you prefer.
 
 ## Not yet supported

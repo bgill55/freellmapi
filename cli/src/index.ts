@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { OpenAI } from 'openai';
 import Database from 'better-sqlite3';
 import fs from 'fs';
